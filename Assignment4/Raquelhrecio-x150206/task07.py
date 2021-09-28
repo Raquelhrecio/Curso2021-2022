@@ -24,6 +24,10 @@ g.parse(github_storage+"/rdf/example6.rdf", format="xml")
 """**TASK 7.1: List all subclasses of "Person" with RDFLib and SPARQL**"""
 
 # TO DO
+from rdflib.plugins.sparql import prepareQuery
+
+ns = Namespace("http://somewhere#")
+
 q1 = prepareQuery('''
   SELECT ?Subject WHERE { 
     ?Subject rdfs:subClassOf ?Class.
@@ -41,7 +45,7 @@ for r in g.query(q1, initBindings = {'?Class' : ns.Person}):
 
 # TO DO
 
-# Visualize the resultq2 = prepareQuery('''
+q2 = prepareQuery('''
   SELECT ?Subject WHERE { 
     {?Subject rdf:type ?Class}
     UNION
@@ -50,7 +54,8 @@ for r in g.query(q1, initBindings = {'?Class' : ns.Person}):
   }
   ''',
   initNs = { "rdf": RDF, "rdfs": RDFS}
-)s
+)
+# Visualize the result
 for r in g.query(q2, initBindings = {'?Class' : ns.Person}):
   print(r.Subject)
 
