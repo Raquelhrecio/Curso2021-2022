@@ -54,6 +54,7 @@ for s, p, o in g:
 """**TASK 6.4: Add to the individual JaneSmith the fullName, given and family names**"""
 
 VCARD = Namespace("http://www.w3.org/2001/vcard-rdf/3.0#")
+
 g.add((ns.JaneSmith, VCARD.FN, Literal("Jane Smith")))
 g.add((ns.JaneSmith, VCARD.Given, Literal("Jane")))
 g.add((ns.JaneSmith, VCARD.Family, Literal("Smith")))
